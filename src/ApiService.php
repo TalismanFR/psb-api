@@ -36,7 +36,7 @@ class ApiService
     public function login(string $email, $password): ?Login
     {
         $response = $this->api->login(new LoginRequest($email, $password));
-        if ($response->getCode() !== 200) {
+        if ($response->getCode() !== 200 || $response->getBody() == null) {
             return null;
         }
 
@@ -72,7 +72,7 @@ class ApiService
     public function createOrder(string $token, OrderRequest $orderRequest): ?Order
     {
         $response = $this->api->createOrder($token, $orderRequest);
-        if ($response->getCode() == 503) {
+        if ($response->getCode() == 503 || $response->getBody() == null) {
             return null;
         }
 
@@ -88,7 +88,7 @@ class ApiService
     public function orders(string $token, int $page = 1): ?array
     {
         $response = $this->api->orders($token, $page);
-        if ($response->getCode() == 503) {
+        if ($response->getCode() == 503 || $response->getBody() == null) {
             return null;
         }
         $response = $this->deserializationResponse($response->getBody());
