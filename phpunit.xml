@@ -20,12 +20,6 @@
         </whitelist>
     </filter>
     <logging>
-        <log type="coverage-html" target="tests/_output/report" lowUpperBound="35" highLowerBound="70"/>
         <log type="coverage-clover" target="tests/_output/coverage.xml"/>
-        <log type="coverage-php" target="tests/_output/coverage.serialized"/>
-        <log type="coverage-text" target="php://stdout" showUncoveredFiles="false"/>
-        <log type="junit" target="tests/_output/logfile.xml"/>
-        <log type="testdox-html" target="tests/_output/testdox.html"/>
-        <log type="testdox-text" target="tests/_output/testdox.txt"/>
     </logging>
 </phpunit>
