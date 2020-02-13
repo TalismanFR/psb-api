@@ -31,9 +31,9 @@ class ApiTest extends TestCase
      */
     public function testLoginFromEnv(): LoginRequest
     {
-        $this->assertArrayHasKey('login', $_ENV);
-        $this->assertArrayHasKey('password', $_ENV);
-        return new LoginRequest($_ENV['login'], $_ENV['password']);
+        $this->assertArrayHasKey('LOGIN', $_ENV);
+        $this->assertArrayHasKey('PASSWORD', $_ENV);
+        return new LoginRequest($_ENV['LOGIN'], $_ENV['PASSWORD']);
     }
 
     /**

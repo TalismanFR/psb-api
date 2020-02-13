@@ -1,7 +1,7 @@
 <phpunit>
     <php>
-<!--        <env name="login" value=""/>-->
-<!--        <env name="password" value=""/>-->
+<!--        <env name="LOGIN" value=""/>-->
+<!--        <env name="PASSWORD" value=""/>-->
         <!--        <env name="url" value="https://api.dev.rko.psb.finstar.online/"/>-->
         <env name="url" value="https://api.lk.psbank.ru/fo/v1.0.0/"/>
         <env name="cityId" value="119"/>
