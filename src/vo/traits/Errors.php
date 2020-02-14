@@ -35,6 +35,16 @@ trait Errors
         return false;
     }
 
+    public function hasErrorMessage(string $message): bool
+    {
+        foreach ($this->errors as $error) {
+            if ($error->getMessage() === $message) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public function isError(): bool
     {
         return !empty($this->errors);

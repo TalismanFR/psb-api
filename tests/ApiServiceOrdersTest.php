@@ -51,12 +51,26 @@ class ApiServiceOrdersTest extends TestCase
         $this->assertEquals(155775, $order->getId());
         $this->assertInstanceOf(PhoneValue::class, $order->getPhone());
         $this->assertEquals('+7(967)531-91-22', $order->getPhone()->getPhone());
-        $this->assertEquals($order->getCityId(),119);
+        $this->assertEquals($order->getCityId(), 119);
+        $this->assertFalse($order->getNeedSSchet());
+        $this->assertTrue($order->getNeedRSchet());
+        $this->assertEquals($order->getFio(), 'tes test test');
+        $this->assertEquals($order->getEmail()->getFullAddress(), 'test@test.ru');
+        $this->assertEquals($order->getComment(), 'comment');
+        $this->assertEquals($order->getCommentCall(), "выкл\r\nвыкл");
+        $this->assertEquals($order->getCallId(), 2116);
+        $this->assertEquals($order->getStatus(), 20);
+        $this->assertEquals($order->getCommunicationStatus(), 30);
+        $this->assertEquals($order->getContactResult(), null);
 
-        $orders=$service->orders('token',1);
+        $orders = $service->orders('token', 1);
         $this->assertNull($orders);
 
-        $orders=$service->orders('token','1');
+        $orders = $service->orders('token', '1');
         $this->assertIsArray($orders);
+        $this->assertArrayHasKey(0, $orders);
+        $order = $orders[0];
+        $this->assertTrue($order->isError());
+        $this->assertTrue($order->hasErrorMessage('inn: В системе найден дубликат.'));
     }
 }
